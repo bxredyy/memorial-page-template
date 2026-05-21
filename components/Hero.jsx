@@ -32,9 +32,9 @@ export default function Hero() {
       >
         <div className="w-[88px] h-[88px] rounded-full ring-4 ring-cream-100 overflow-hidden shadow-xl bg-cream-200">
           <img
-            src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc4?w=400&q=80&auto=format&fit=crop"
+            src="/images/hero-portrait.jpg"
             alt="Portrait of Name of Deceased"
-            className="w-full h-full object-cover vintage grayscale"
+            className="w-full h-full object-cover object-top"
           />
         </div>
       </div>
@@ -51,9 +51,9 @@ export default function Hero() {
           }}
         >
           <img
-            src="https://images.unsplash.com/photo-1606513542745-ca318e2d4f04?w=1400&q=80&auto=format&fit=crop"
-            alt="Name of Deceased with family"
-            className="w-full h-full object-cover hero-drift grayscale"
+            src="/images/hero-bg.jpg"
+            alt="Name of Deceased"
+            className="w-full h-full object-cover object-top hero-drift"
           />
         </div>
 
@@ -67,15 +67,15 @@ export default function Hero() {
           </h1>
 
           <Reveal delay={150} className="mt-6 flex items-center justify-center gap-6 text-ink-700">
-            <span className="font-display text-2xl tracking-[0.18em]">1929</span>
+            <span className="font-display text-2xl tracking-[0.18em]">1977</span>
             <FloralDots />
-            <span className="font-display text-2xl tracking-[0.18em]">2021</span>
+            <span className="font-display text-2xl tracking-[0.18em]">2025</span>
           </Reveal>
 
           <Reveal delay={300} as="p" className="mt-6 text-[15px] md:text-base text-ink-700 leading-relaxed max-w-xl mx-auto">
-            [Name] was born on July 12th, 1929 and passed away on
+            [Name] was born on 14 March 1977 and passed away on
             <br />
-            December 1st, 2021 at the age of 92
+            2 September 2025 at the age of 48
           </Reveal>
         </div>
       </Reveal>

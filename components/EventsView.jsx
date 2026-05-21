@@ -217,10 +217,10 @@ function ServiceInfo() {
 
       {/* Date & time */}
       <p className="mt-4 font-display text-[15px] tracking-[0.07em] text-ink-700">
-        Sat, Dec 4th, 2021
+        Sat, 6 Sep 2025
       </p>
       <p className="mt-0.5 font-display text-[15px] tracking-[0.07em] text-ink-700">
-        11:00 &ndash; 12:00am SAST
+        11:00 &ndash; 12:00 SAST
       </p>
 
       {/* CTA buttons */}

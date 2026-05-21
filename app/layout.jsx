@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "In Loving Memory of Name of Deceased",
   description:
-    "A memorial page preserving the life and memories of [Name] (1929 – 2021).",
+    "A memorial page honouring the life and memories of [Name] (1977 – 2025).",
 };
 
 export default function RootLayout({ children }) {

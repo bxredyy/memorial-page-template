@@ -23,7 +23,7 @@ const prompts = [
   { type: "prompt", title: "What is something you will always remember about [Name]?" },
   { type: "prompt", title: "What is a piece of advice [Name] gave you?" },
   { type: "prompt", title: "What is your favourite memory with [Name]?" },
-  { type: "prompt", title: "How did [Name] show love to the people around her?" },
+  { type: "prompt", title: "How did [Name] show love to the people around him?" },
   { type: "support" },
   { type: "prompt", title: "What would you want [Name] to know today?" },
   { type: "prompt", title: "What do you miss most about [Name]?" },
@@ -33,122 +33,122 @@ const prompts = [
   { type: "prompt", title: "How would [Name] want to be remembered?" },
   { type: "prompt", title: "What did [Name] mean to you, in your own words?" },
   { type: "prompt", title: "Describe the feeling of being in [Name]'s company." },
-  { type: "prompt", title: "What is something [Name] would have said right now, if she could?" },
+  { type: "prompt", title: "What is something [Name] would have said right now, if he could?" },
 ];
 
 const memories = [
   {
     kind: "titled",
-    title: "What does John want someone reading this 100 years from now to know about [Name]?",
-    body: "I will always cherish the fond memories I have of my grandma. I’ll keep her in my heart and mind forever. She’ll never be forgotten.",
-    author: "John Baker",
-    role: "[Name]’s Grandson",
+    title: "What does [Guest Name] want someone reading this 100 years from now to know about [Name]?",
+    body: "I will always cherish the memories I have of my dad. He had a quiet strength about him that made you feel safe just by being near him. He will never be forgotten.",
+    author: "[Guest Name]",
+    role: "[Name]'s Son",
     avatar: "https://i.pravatar.cc/120?img=12",
   },
   {
     kind: "testimonial",
-    body: "[Name] was a dear friend. We grew up on the same street as kids and we have remained friends ever since.",
-    author: "William Clark",
-    role: "[Name]’s Friend",
+    body: "[Name] was a dear friend. We grew up on the same street and stayed close for decades. He was the kind of man you could call at any hour and he would show up.",
+    author: "[Guest Name]",
+    role: "[Name]'s Friend",
     avatar: "https://i.pravatar.cc/120?img=14",
   },
   {
     kind: "titled",
     title: "What is a funny story about [Name]?",
-    body: "Grandma Eve loved animals. Every time we got a new pet we’d name it after a song or artist. We’d welcome it into our home by gathering in the living room and playing the music.",
-    author: "John Baker",
-    role: "[Name]’s Grandson",
+    body: "Every Sunday braai was his domain. He would stand at that fire for hours, tongs in hand, absolutely convinced he was a master chef. The boerewors was always slightly burnt — but no one ever said a word because he was so proud of it.",
+    author: "[Guest Name]",
+    role: "[Name]'s Child",
     avatar: "https://i.pravatar.cc/120?img=12",
   },
   {
     kind: "testimonial",
-    body: "I will always cherish the fond memories I have of my grandma. I’ll keep her in my heart and mind forever. She’ll never be forgotten.",
-    author: "John Baker",
-    role: "[Name]’s Grandson",
+    body: "I will always treasure those Sunday afternoons on the stoep with him. A cold drink, the sound of the neighbourhood, and his easy laugh. He made every ordinary moment feel like something worth remembering.",
+    author: "[Guest Name]",
+    role: "[Name]'s Sibling",
     avatar: "https://i.pravatar.cc/120?img=12",
   },
   {
     kind: "testimonial",
-    body: "When I think of [Name] I think of the joy she brought to this world. It was so easy and pleasant to be in her company. She cared about everyone around her.",
-    author: "Tara Nelson",
-    role: "[Name]’s Friend",
+    body: "When I think of [Name] I think of the warmth he brought into every room. It was so easy to be around him — he made everyone feel like they belonged. He cared deeply about the people in his life.",
+    author: "[Guest Name]",
+    role: "[Name]'s Friend",
     avatar: "https://i.pravatar.cc/120?img=47",
   },
   {
     kind: "candle",
-    quote: "Her smile and loving nature will be missed.",
-    litBy: "Ella Baker-Thompson",
-    role: "[Name]’s Daughter",
+    quote: "His strength and laughter will be missed every single day.",
+    litBy: "[Guest Name]",
+    role: "[Name]'s Partner",
   },
   { kind: "business-flowers" },
   {
     kind: "titled",
     title: "What is a funny story about [Name]?",
-    body: "“I can’t tell the difference between a rose and a dandelion. So when it came time to fix up my garden one spring, I had no clue which plants to keep and which ones to remove. Until, that is, [Name] gave me this handy tip: ‘Pull them all up. If it comes back, it’s a weed.’”",
-    author: "Tara Nelson",
-    role: "[Name]’s Friend",
+    body: "“He once decided to fix the geyser himself on a Saturday morning. By midday there was water on the ceiling and a very calm voice saying, ‘I think we should call a plumber.’ He laughed about it for years after.”",
+    author: "[Guest Name]",
+    role: "[Name]'s Friend",
     avatar: "https://i.pravatar.cc/120?img=47",
   },
   {
     kind: "titled",
-    title: "How did Tara know [Name]?",
-    body: "“[Name] and I grew up together. I knew her through Junior High and High School and we remained close. She was a beautiful person and I miss her dearly.”",
-    author: "Tara Nelson",
-    role: "[Name]’s Friend",
+    title: "How did [Guest Name] know [Name]?",
+    body: "“[Name] and I met at work in the early 2000s. We ended up becoming much more than colleagues — he was someone I could always count on. He had integrity in everything he did, and I miss him dearly.”",
+    author: "[Guest Name]",
+    role: "[Name]'s Colleague",
     avatar: "https://i.pravatar.cc/120?img=47",
   },
   {
     kind: "testimonial",
-    body: "Some of our greatest blessings are knowing warm and gentle people. I count having [Name] as a friend and being pulled into her family as one of the greatest moments of my life. I never took it for granted. I felt lucky each time there was an opportunity to spend time…",
-    author: "Tara Nelson",
-    role: "[Name]’s Friend",
+    body: "Some people leave a mark on you without ever trying. [Name] was like that. He never sought attention or praise — he just quietly showed up, did what needed to be done, and made you feel like you mattered. I count myself lucky to have known him.",
+    author: "[Guest Name]",
+    role: "[Name]'s Friend",
     avatar: "https://i.pravatar.cc/120?img=47",
     truncated: true,
   },
   {
     kind: "titled",
     title: "What is a funny story about [Name]?",
-    body: "“Mom had a small decorative windmill in her yard. A storm broke one of the blades, causing the windmill to shake violently. Dad announced that he would ‘take care of it’ and rebalanced the windmill by snapping off the opposing blade. Watching him, Mom remarked, ‘I hope I…’”",
-    author: "Ella Baker-Thompson",
-    role: "[Name]’s Daughter",
+    body: "“Dad was convinced he knew every shortcut in Johannesburg. We once took a ‘quicker route’ to a family braai that added forty-five minutes to the trip. He never once admitted the GPS might have been right.”",
+    author: "[Guest Name]",
+    role: "[Name]'s Child",
     avatar: "https://i.pravatar.cc/120?img=45",
     truncated: true,
   },
   {
     kind: "testimonial",
-    body: "[Name] had a way of making you feel completely at home. Her kitchen always smelled of something baking, and she had time for anyone who knocked on her door. That was just who she was — open, warm, generous.",
-    author: "Margaret Owens",
-    role: "[Name]’s Neighbour",
+    body: "[Name] had a way of making you feel completely at home. His place was always open — a cold drink ready, sport on the telly, and time for whoever knocked. That was just who he was — open, warm, generous.",
+    author: "[Guest Name]",
+    role: "[Name]'s Neighbour",
     avatar: "https://i.pravatar.cc/120?img=32",
   },
   {
     kind: "titled",
     title: "How did [Name] make the world a better place?",
-    body: "“She was always the first to show up when someone needed help. Moving furniture, dropping off meals, sitting quietly with someone in grief. She didn’t talk about doing good — she just did it.”",
-    author: "David Chen",
-    role: "[Name]’s Colleague",
+    body: "“He was always the first to show up when someone needed a hand. Moving furniture, sorting out a leaking tap, driving someone to the hospital at midnight. He didn’t talk about doing good — he just did it.”",
+    author: "[Guest Name]",
+    role: "[Name]'s Colleague",
     avatar: "https://i.pravatar.cc/120?img=55",
   },
   { kind: "business-book" },
   {
     kind: "testimonial",
-    body: "She taught me how to make her famous lemon cake when I was eight years old. I still make it every birthday. I’ll be making it for the rest of my life.",
-    author: "Sarah Mitchell",
-    role: "[Name]’s Granddaughter",
+    body: "He taught me how to braai properly when I was a teenager. Coal timing, when to close the lid, how to rest the meat. I still do it exactly the way he showed me. I always will.",
+    author: "[Guest Name]",
+    role: "[Name]'s Nephew",
     avatar: "https://i.pravatar.cc/120?img=39",
   },
   {
     kind: "candle",
-    quote: "A light that will never truly go out.",
-    litBy: "James Baker",
-    role: "[Name]’s Son",
+    quote: "Gone too soon. Never forgotten.",
+    litBy: "[Guest Name]",
+    role: "[Name]'s Friend",
   },
   {
     kind: "titled",
-    title: "What is [Name]’s legacy?",
-    body: "“She raised a family, built a community, and touched more lives than she ever knew. Her legacy is not just the family she left behind — it’s every person who was kinder for having known her.”",
-    author: "Ella Baker-Thompson",
-    role: "[Name]’s Daughter",
+    title: "What is [Name]'s legacy?",
+    body: "“He built a life worth living and a family worth having. His legacy is not just in the people he raised — it’s in every person who walked away from knowing him a little more hopeful, a little more sure of themselves.”",
+    author: "[Guest Name]",
+    role: "[Name]'s Child",
     avatar: "https://i.pravatar.cc/120?img=45",
   },
 ];
@@ -423,7 +423,7 @@ function MemoryCard({ kind, title, body, author, role, avatar, quote, litBy, tru
             Remember Forever
           </p>
           <p className="text-[13px] text-ink-600 max-w-xs">
-            Preserve [Name]&rsquo;s story in a beautiful printed keepsake — a gift that lasts generations.
+            Preserve [Name]&rsquo;s story in a beautiful printed keepsake &mdash; a gift that lasts generations.
           </p>
           <button className="mt-1 bg-sage-500 hover:bg-sage-600 text-white text-[11px] uppercase tracking-[0.22em] px-6 py-2.5 rounded-sm transition shadow">
             Build a Remember Book
@@ -447,7 +447,7 @@ function MemoryCard({ kind, title, body, author, role, avatar, quote, litBy, tru
           {body}
           {truncated && (
             <button className="block mt-3 text-[11px] uppercase tracking-[0.22em] text-sage-700 hover:underline">
-              Read More ▾
+              Read More &#9662;
             </button>
           )}
         </p>
@@ -464,7 +464,7 @@ function MemoryCard({ kind, title, body, author, role, avatar, quote, litBy, tru
         <p className="text-[14px] text-ink-800 leading-relaxed italic">{body}</p>
         {truncated && (
           <button className="mt-3 text-[11px] uppercase tracking-[0.22em] text-sage-700 hover:underline flex items-center gap-1">
-            Read More <span aria-hidden>▾</span>
+            Read More <span aria-hidden>&#9662;</span>
           </button>
         )}
         <div className="mt-4 flex items-center gap-3">
@@ -589,19 +589,6 @@ function CandleSvg() {
       <rect x="31.2" y="34" width="1.6" height="6" fill="#3a2a14" />
       <rect x="22" y="40" width="20" height="36" rx="2" fill="#E0B879" />
       <path d="M22 40 h20" stroke="#9F7A40" strokeWidth="0.5" />
-    </svg>
-  );
-}
-
-function TreeSvg({ className = "" }) {
-  return (
-    <svg width="80" height="60" viewBox="0 0 80 60" className={className} aria-hidden>
-      <path d="M20 50l14-30 14 30z" fill="#6B8064" />
-      <path d="M20 40l14-30 14 30z" fill="#86997D" />
-      <path d="M20 30l14-30 14 30z" fill="#A9B999" />
-      <rect x="32" y="50" width="6" height="8" fill="#6B5742" />
-      <path d="M52 52l10-18 10 18z" fill="#6B8064" />
-      <rect x="60" y="52" width="4" height="6" fill="#6B5742" />
     </svg>
   );
 }

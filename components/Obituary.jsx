@@ -58,36 +58,39 @@ export default function Obituary() {
           <Reveal as="article" delay={100} className="mt-16 text-ink-800 leading-[1.85] text-[16.5px] text-center md:text-left">
             <p>
               <span className="font-display text-5xl float-left leading-[0.85] mr-2 text-copper-500">N</span>
-              ame of Deceased, devoted wife, mother, and grandmother passed away
-              peacefully on Wednesday, December 1, 2021. [Name] was born on July
-              12, 1929 in Sarasota, Florida to Alonzo and Nell Bishop. She was
-              the first of three children.
+              ame of Deceased, devoted husband, father, and son, passed away
+              peacefully on Tuesday, 2 September 2025. [Name] was born on
+              14&nbsp;March 1977 in Johannesburg to [Father&rsquo;s Name] and
+              [Mother&rsquo;s Name]. He was the second of four children,
+              growing up in the East Rand with a deep love for community,
+              sport, and family.
             </p>
             <p className="mt-5">
-              She met her future husband, William, then a private in the U.S. Army
-              stationed at Fort Carson, Colo, on a blind date. She married her
-              sweetheart on November 21, 1953. They had lived in Florence, Colo.,
-              Glendale, Ariz., and Farmington, N.M., before finally returning to
-              Sarasota, F.L in 1969. She took great joy in pulling together and
-              keeping a lovely home for her family. [Name] insisted on teaching
-              all of her children to cook and her family recipes are cherished
-              heirlooms.
+              He met the love of his life at a gathering in Pretoria in 1999.
+              They were married on 3 April 2004 and built their home in
+              [City], where they raised their two children with warmth,
+              laughter, and an open door. [Name] took great pride in being
+              present — for school mornings, weekend braais, and every
+              moment in between. His family recipes and weekend traditions
+              are cherished by all who knew him.
             </p>
 
             {expanded && (
               <>
                 <p className="mt-5">
-                  She was a member of Christ's Church and enjoyed several
-                  callings during her life. Her best memories always involved
-                  being surrounded by her family — the noise of grandchildren in
-                  the kitchen, the smell of bread on Saturday mornings, the
-                  porch light kept on for late arrivals.
+                  He was an active member of his local community and gave
+                  his time freely to those around him. His best memories
+                  always involved being surrounded by the people he loved —
+                  the noise of his children in the house, early mornings
+                  with coffee on the stoep, and the cricket season that
+                  brought the whole family together.
                 </p>
                 <p className="mt-5">
-                  [Name] is survived by her four children, eleven grandchildren,
-                  and six great-grandchildren. The family asks that in lieu of
-                  flowers, donations be made to her church or planted as living
-                  memorials in her name.
+                  [Name] is survived by his beloved wife, his two children,
+                  his parents, and his three siblings. The family asks that
+                  those who wish to show their love consider offering
+                  practical support directly — your presence, your prayers,
+                  and your kindness mean everything during this time.
                 </p>
               </>
             )}
@@ -112,8 +115,8 @@ export default function Obituary() {
           <Reveal className="mt-20 text-center">
             <HeartIcon />
             <p className="mt-4 text-ink-700 max-w-md mx-auto">
-              Show your love and support to [Name]'s family by adding your name
-              to [Name]'s Guest Book.
+              Show your love and support to [Name]&rsquo;s family by adding your
+              name to [Name]&rsquo;s Guest Book.
             </p>
             <button className="mt-5 border border-dashed border-sage-500 text-sage-700 hover:bg-sage-50 text-[12px] uppercase tracking-[0.2em] px-6 py-2.5 rounded-full transition">
               Add My Name
@@ -135,11 +138,11 @@ export default function Obituary() {
               />
               <div className="relative z-10 max-w-md mx-auto">
                 <p className="font-display text-2xl text-ink-900">
-                  Sympathy flowers are a simple way
+                  A floral tribute is a simple, heartfelt way
                   <br/>
-                  to let [Name]'s loved ones know that
+                  to let [Name]&rsquo;s family know that
                   <br/>
-                  you are thinking about them.
+                  you are thinking of them.
                 </p>
                 <button className="mt-5 bg-sage-500 hover:bg-sage-600 text-white text-[12px] uppercase tracking-[0.2em] px-6 py-3 rounded-sm transition">
                   Send Flowers To Family
@@ -153,9 +156,9 @@ export default function Obituary() {
             <div className="bg-sage-50/60 rounded-xl py-12 px-8 text-center">
               <div className="max-w-lg mx-auto">
                 <p className="font-display text-2xl text-ink-900">
-                  There are many ways to show meaningful
+                  There are many meaningful ways to support
                   <br />
-                  support for [Name]&rsquo;s family.
+                  [Name]&rsquo;s family during this time.
                 </p>
                 <button
                   onClick={() => setShowSupport((s) => !s)}
@@ -212,8 +215,8 @@ export default function Obituary() {
           {/* Stat cards */}
           <div id="events" className="scroll-mt-24">
             <Reveal className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <StatCard icon="heart" label="Memories" count={12} subtitle="Click here to view memories & condolences" />
-              <StatCard icon="cal" label="Event" count={1} subtitle="Click here to view events & services for [Name]" />
+              <StatCard icon="heart" label="Memories" count={12} subtitle="View memories and condolences shared by loved ones" />
+              <StatCard icon="cal" label="Event" count={1} subtitle="View the funeral service details and programme" />
             </Reveal>
           </div>
         </div>

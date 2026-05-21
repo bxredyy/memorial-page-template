@@ -60,7 +60,7 @@ export default function Livestream() {
             Funeral Service for Name of Deceased
           </p>
           <p className="text-xs md:text-sm tracking-[0.18em] mt-1 text-cream-100/90">
-            SAT, 4 DEC 2021 AT 11:00PM GMT
+            SAT, 6 SEP 2025 · 11:00 – 12:00 SAST
           </p>
         </div>
       </Reveal>

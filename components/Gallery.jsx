@@ -55,7 +55,7 @@ export default function Gallery() {
         </h2>
         <p className="mt-3 text-ink-700 max-w-xl mx-auto text-[15px]">
           Scroll through cherished memories — each photo a small chapter of the
-          life she shared with us.
+          life he shared with us.
         </p>
       </Reveal>
 
