@@ -4,7 +4,7 @@ const keepsakes = [
   { label: null, img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80", price: "$78" },
   { label: null, img: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&q=80", price: "$92" },
   { label: null, img: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&q=80", price: "$110" },
-  { label: "Plant Trees", img: null, accent: "sage" },
+  { label: "Show Support", img: null, accent: "sage" },
   { label: "Send Flowers", img: null, accent: "rose" },
 ];
 
@@ -86,7 +86,8 @@ function KeepsakeCard({ label, img, accent, price }) {
     <button className={`group rounded-lg ${bg} aspect-[4/5] shadow hover:shadow-xl transition flex flex-col items-center justify-center p-4`}>
       {accent === "sage" ? (
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" className="text-sage-700">
-          <path d="M12 22V12M6 22V14M18 22V14M12 12c-2-3-2-7 0-10 2 3 2 7 0 10zM6 14c-2-2-2-6 0-9 2 3 2 7 0 9zM18 14c-2-2-2-6 0-9 2 3 2 7 0 9z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M12 10v4M10 12h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
         </svg>
       ) : (
         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" className="text-rose-400">
@@ -100,7 +101,7 @@ function KeepsakeCard({ label, img, accent, price }) {
       <p className="mt-3 font-script text-2xl text-ink-900">{label}</p>
       <p className="mt-1 text-[11px] text-ink-700 px-3">
         {accent === "sage"
-          ? "Click to plant a living tribute to [Name]’s legacy."
+          ? "Show meaningful support for [Name]’s family during this time."
           : "Click to send beautiful flowers directly to [Name]’s family."}
       </p>
     </button>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const actions = [
   { label: "Send Flowers", icon: <FlowerIcon /> },
-  { label: "Plant a Memorial Tree", icon: <TreeIcon /> },
+  { label: "Send Grocery Support", icon: <GroceryIcon /> },
   { label: "Sign [Name]'s Guestbook", icon: <GuestbookIcon /> },
   { label: "Create [Name]'s Book", icon: <BookIcon /> },
   { label: "Share this Memorial", icon: <ShareIcon /> },
@@ -87,16 +87,18 @@ function FlowerIcon() {
   );
 }
 
-function TreeIcon() {
+function GroceryIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
-        d="M12 22V12M6 22V15M18 22V15M12 12c-2-3-2-7 0-10 2 3 2 7 0 10zM6 15c-2-2-2-6 0-8 2 2 2 6 0 8zM18 15c-2-2-2-6 0-8 2 2 2 6 0 8z"
+        d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
         stroke="white"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+      <line x1="3" y1="6" x2="21" y2="6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M16 10a4 4 0 0 1-8 0" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }

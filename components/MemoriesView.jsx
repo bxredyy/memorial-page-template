@@ -24,7 +24,7 @@ const prompts = [
   { type: "prompt", title: "What is a piece of advice [Name] gave you?" },
   { type: "prompt", title: "What is your favourite memory with [Name]?" },
   { type: "prompt", title: "How did [Name] show love to the people around her?" },
-  { type: "tree" },
+  { type: "support" },
   { type: "prompt", title: "What would you want [Name] to know today?" },
   { type: "prompt", title: "What do you miss most about [Name]?" },
   { type: "prompt", title: "What song or piece of music reminds you of [Name]?" },
@@ -290,21 +290,26 @@ function PromptCard({ type, title, placeholder }) {
     );
   }
 
-  if (type === "tree") {
+  if (type === "support") {
     return (
-      <div className="shrink-0 w-[260px] rounded-md overflow-hidden bg-cream-200 shadow-lg flex flex-col">
-        <div className="px-5 py-8 text-center flex-1 flex flex-col items-center justify-center">
-          <p className="font-display text-lg text-ink-900 leading-snug">
-            Leave a{" "}
-            <span className="font-script text-2xl text-copper-500">Living, Lasting</span>
-            <br />
-            <span className="font-script text-2xl text-copper-500">Tribute</span> with a
-            memorial tree.
+      <div className="shrink-0 w-[260px] rounded-md overflow-hidden bg-sage-50 shadow-lg flex flex-col">
+        <div className="px-5 py-7 text-center flex-1 flex flex-col items-center justify-center">
+          <p className="font-display text-[15px] text-ink-900 leading-snug">
+            There are many ways to
           </p>
-          <TreeSvg className="mt-4" />
+          <p className="font-script text-[26px] text-sage-600 leading-snug mt-1">
+            Honour Their Memory
+          </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-1.5">
+            {["Send Flowers", "Grocery Support", "Meal Support", "Funeral Support"].map((tag) => (
+              <span key={tag} className="text-[9.5px] uppercase tracking-[0.18em] text-sage-700 bg-sage-100/80 px-2.5 py-1 rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-        <button className="bg-sage-600 hover:bg-sage-700 text-white text-[11px] uppercase tracking-[0.22em] py-3 transition flex items-center justify-center gap-2">
-          <PlusIconSm /> Plant a Tree for [Name]
+        <button className="bg-sage-600 hover:bg-sage-700 text-white text-[11px] uppercase tracking-[0.22em] py-3 transition">
+          Show Support Options
         </button>
       </div>
     );

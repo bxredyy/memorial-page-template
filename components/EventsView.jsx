@@ -226,7 +226,7 @@ function ServiceInfo() {
       {/* CTA buttons */}
       <div className="mt-6 flex gap-3 flex-wrap">
         <button className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition">
-          <TreeIcon /> Plant a Tree
+          <SupportIcon /> Show Support
         </button>
         <button className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition">
           <FlowerIcon /> Send Flowers
@@ -277,11 +277,11 @@ function ServiceVideo() {
 
 /* ─────────────────────────────── ICONS ────────────────────────────── */
 
-function TreeIcon() {
+function SupportIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
-        d="M12 22V12M6 22V15M18 22V15M12 12c-2-3-2-7 0-10 2 3 2 7 0 10zM6 15c-2-2-2-5 0-7 2 2 2 5 0 7zM18 15c-2-2-2-5 0-7 2 2 2 5 0 7z"
+        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
