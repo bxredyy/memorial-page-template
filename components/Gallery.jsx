@@ -50,7 +50,7 @@ export default function Gallery() {
         <p className="text-[11px] uppercase tracking-[0.35em] text-sage-600">A life in photographs</p>
         <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink-900">Moments of [Name]</h2>
         <p className="mt-3 text-ink-700 max-w-xl mx-auto text-[15px]">
-          Scroll through cherished memories — each photo a small chapter of the life he shared with us.
+          Scroll through cherished memories â€” each photo a small chapter of the life he shared with us.
         </p>
       </Reveal>
 
