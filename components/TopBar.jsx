@@ -1,15 +1,16 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { id: "obituary", label: "Obituary" },
+  { id: "obituary", label: "Memorial" },
   { id: "memories", label: "Memories" },
   { id: "events", label: "Events" },
 ];
 
 export default function TopBar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,7 +30,6 @@ export default function TopBar() {
       }`}
     >
       <div className="h-full max-w-[1500px] mx-auto px-8 flex items-center justify-between">
-        {/* Left: brand initial only after scroll */}
         <div
           className={`font-script text-2xl text-copper-500 transition-all duration-500 ${
             scrolled ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"
@@ -38,13 +38,10 @@ export default function TopBar() {
           N
         </div>
 
-        {/* Center: nav appears on scroll */}
         <nav
           aria-label="Memorial sections"
           className={`absolute left-1/2 -translate-x-1/2 flex items-center gap-1 transition-all duration-700 ease-out ${
-            scrolled
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-2 pointer-events-none"
+            scrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"
           }`}
         >
           {NAV_ITEMS.map((item, i) => (
@@ -56,24 +53,73 @@ export default function TopBar() {
             >
               <span className="relative">
                 {item.label}
-                <span className="absolute -bottom-1 left-0 right-0 h-px bg-sage-500 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                <span
+                  className="absolute -bottom-1 left-0 right-0 h-px bg-sage-500 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                  style={{ transitionDelay: "0ms" }}
+                />
               </span>
             </a>
           ))}
         </nav>
 
-        {/* Right: Submit Login persists in both states */}
-        <a
-          href="#"
-          className={`text-[11px] uppercase tracking-[0.22em] transition-colors duration-500 ${
-            scrolled
-              ? "text-ink-700 hover:text-ink-900"
-              : "text-white/90 hover:text-white"
-          }`}
-        >
-          Submit Login
-        </a>
+        <div className="flex items-center gap-4">
+          <button
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md bg-white/90 hover:bg-white transition shadow-sm"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen((s) => !s)}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path
+                d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M3 6h18M3 12h18M3 18h18"}
+                stroke="#2F2A24"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          <a
+            href="#"
+            className={`hidden md:inline text-[11px] uppercase tracking-[0.22em] transition-colors duration-500 ${
+              scrolled ? "text-ink-700 hover:text-ink-900" : "text-white/90 hover:text-white"
+            }`}
+          >
+            Submit Login
+          </a>
+        </div>
       </div>
+
+      {menuOpen && (
+        <div className="md:hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm" onClick={() => setMenuOpen(false)}>
+          <div
+            className="absolute top-14 right-4 left-4 bg-cream-100 rounded-lg shadow-xl p-5 transform transition-transform duration-320 ease-out"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <nav className="flex flex-col gap-3">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="px-4 py-3 rounded-md text-ink-800 font-semibold tracking-wide uppercase"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <div className="mt-4 border-t pt-4">
+              <a
+                href="#"
+                className="block text-center text-[13px] uppercase tracking-wide text-ink-700"
+                onClick={() => setMenuOpen(false)}
+              >
+                Submit Login
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
