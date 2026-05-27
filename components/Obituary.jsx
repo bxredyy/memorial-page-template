@@ -6,20 +6,20 @@ import MemoriesView from "./MemoriesView";
 import EventsView from "./EventsView";
 
 const tabs = [
-  { id: "obituary", label: "Memorial", count: null },
+  { id: "memorial", label: "Memorial", count: null },
   { id: "memories", label: "Memories", count: 12 },
   { id: "events", label: "Events", count: 1 },
 ];
 
 export default function Obituary() {
-  const [active, setActive] = useState("obituary");
+  const [active, setActive] = useState("memorial");
   const [expanded, setExpanded] = useState(false);
   const [showSupport, setShowSupport] = useState(false);
 
   return (
-    <section id="obituary" className="relative min-h-screen bg-cream-100 py-24 px-6 scroll-mt-20">
+    <section id="memorial" className="relative min-h-screen bg-cream-100 py-24 px-6 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
-        <Reveal className="flex flex-wrap items-center justify-center gap-2 bg-white/70 backdrop-blur rounded-full p-1.5 border border-sage-200/60 w-fit mx-auto shadow-sm">
+        <Reveal className="flex flex-wrap items-center justify-center gap-2 bg-white/70 backdrop-blur rounded-full p-1.5 border border-sage-200/60 w-full max-w-[980px] mx-auto shadow-sm overflow-x-auto px-3">
           {tabs.map((t) => (
             <button
               key={t.id}

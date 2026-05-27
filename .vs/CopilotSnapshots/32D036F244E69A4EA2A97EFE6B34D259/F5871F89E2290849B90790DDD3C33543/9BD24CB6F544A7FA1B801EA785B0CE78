@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { id: "memorial", label: "Memorial" },
+  { id: "obituary", label: "Memorial" },
   { id: "memories", label: "Memories" },
   { id: "events", label: "Events" },
 ];
@@ -54,7 +54,7 @@ export default function TopBar() {
               <span className="relative">
                 {item.label}
                 <span
-                  className="absolute -bottom-1 left-0 right-0 h-px bg-sage-500 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300 transform-gpu"
+                  className="absolute -bottom-1 left-0 right-0 h-px bg-sage-500 origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
                   style={{ transitionDelay: "0ms" }}
                 />
               </span>
@@ -64,9 +64,8 @@ export default function TopBar() {
 
         <div className="flex items-center gap-4">
           <button
-            className="md:hidden inline-flex items-center justify-center p-3 rounded-md bg-white/90 hover:bg-white transition shadow-sm"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md bg-white/90 hover:bg-white transition shadow-sm"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
             onClick={() => setMenuOpen((s) => !s)}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -94,17 +93,15 @@ export default function TopBar() {
       {menuOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm" onClick={() => setMenuOpen(false)}>
           <div
-            className="absolute top-14 right-4 left-4 bg-cream-100 rounded-lg shadow-xl p-4 transform-gpu transition duration-200 ease-out"
+            className="absolute top-14 right-4 left-4 bg-cream-100 rounded-lg shadow-xl p-5 transform transition-transform duration-320 ease-out"
             onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
           >
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-3">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className="block px-4 py-3 rounded-md text-ink-800 font-semibold tracking-wide uppercase text-center"
+                  className="px-4 py-3 rounded-md text-ink-800 font-semibold tracking-wide uppercase"
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.label}

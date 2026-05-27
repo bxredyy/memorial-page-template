@@ -45,16 +45,16 @@ export default function Gallery() {
   };
 
   return (
-    <section id="memories" className="relative min-h-screen flex flex-col justify-center bg-cream-100 pt-8 sm:pt-10 pb-16 sm:pb-20 scroll-mt-20 overflow-x-hidden px-0">
-      <Reveal as="header" className="text-center mb-10 sm:mb-12 px-4 sm:px-6">
+    <section id="memories" className="relative min-h-screen flex flex-col justify-center bg-cream-100 pt-10 pb-20 scroll-mt-20">
+      <Reveal as="header" className="text-center mb-12 px-6">
         <p className="text-[11px] uppercase tracking-[0.35em] text-sage-600">A life in photographs</p>
-        <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl text-ink-900">Moments of [Name]</h2>
-        <p className="mt-3 text-ink-700 max-w-xl mx-auto text-sm sm:text-[15px] px-2">
+        <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink-900">Moments of [Name]</h2>
+        <p className="mt-3 text-ink-700 max-w-xl mx-auto text-[15px]">
           Scroll through cherished memories â€” each photo a small chapter of the life he shared with us.
         </p>
       </Reveal>
 
-      <div className="relative w-full">
+      <div className="relative">
         <div className="absolute left-0 right-0 top-[40px] h-px bg-gradient-to-r from-transparent via-ink-900/25 to-transparent" />
 
         <button

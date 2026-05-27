@@ -30,8 +30,8 @@ export default function Gallery() {
     if (!el) return;
     const visible = el.clientWidth || window.innerWidth;
     const delta = Math.round(visible * 0.75);
-    const maxScroll = el.scrollWidth - visible;
-    const target = Math.min(el.scrollLeft + delta, maxScroll);
+    const maxScroll = Math.max(el.scrollWidth - visible, 0);
+    const target = Math.min(Math.max(el.scrollLeft + delta, 0), maxScroll);
     el.scrollTo({ left: target, behavior: "smooth" });
   };
 
@@ -40,7 +40,8 @@ export default function Gallery() {
     if (!el) return;
     const visible = el.clientWidth || window.innerWidth;
     const delta = Math.round(visible * 0.75);
-    const target = Math.max(el.scrollLeft - delta, 0);
+    const maxScroll = Math.max(el.scrollWidth - visible, 0);
+    const target = Math.min(Math.max(el.scrollLeft - delta, 0), maxScroll);
     el.scrollTo({ left: target, behavior: "smooth" });
   };
 

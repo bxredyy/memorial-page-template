@@ -38,7 +38,8 @@
               "RelativeToolTip": "components\\Obituary.jsx",
               "ViewState": "AgIAAAcAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-05-26T06:45:11.926Z"
+              "WhenOpened": "2026-05-26T06:45:11.926Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -50,7 +51,8 @@
               "RelativeToolTip": "components\\TopBar.jsx",
               "ViewState": "AgIAAAcAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-05-26T06:45:07.837Z"
+              "WhenOpened": "2026-05-26T06:45:07.837Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -62,7 +64,8 @@
               "RelativeToolTip": "components\\Gallery.jsx",
               "ViewState": "AgIAACEAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2026-05-26T06:44:32.72Z"
+              "WhenOpened": "2026-05-26T06:44:32.72Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -72,7 +75,7 @@
               "RelativeDocumentMoniker": "components\\MemoriesView.jsx",
               "ToolTip": "C:\\Users\\Mukona Mamaila\\Documents\\GitHub\\memorial-page-template\\components\\MemoriesView.jsx",
               "RelativeToolTip": "components\\MemoriesView.jsx",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2026-05-26T06:44:06.691Z",
               "EditorCaption": ""
