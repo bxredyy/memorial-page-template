@@ -27,7 +27,7 @@ function PromptCarousel() {
     if (!el) return;
     const visible = el.clientWidth || window.innerWidth;
     const delta = Math.round(visible * 0.75) * mult;
-    const max = Math.max(el.scrollWidth - visible, 0);
+    const max = el.scrollWidth - visible;
     const target = Math.min(Math.max(el.scrollLeft + delta, 0), max);
     el.scrollTo({ left: target, behavior: "smooth" });
   };
