@@ -23,6 +23,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 
+# Visual Studio workspace files
+.vs/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
