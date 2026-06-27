@@ -2,6 +2,7 @@ import TopBar from "@/components/TopBar";
 import Hero from "@/components/Hero";
 import Livestream from "@/components/Livestream";
 import Gallery from "@/components/Gallery";
+import LifeTimeline from "@/components/LifeTimeline";
 import Obituary from "@/components/Obituary";
 import RememberBook from "@/components/RememberBook";
 import Remembrance from "@/components/Remembrance";
@@ -14,6 +15,7 @@ export default function Page() {
       <Hero />
       <Livestream />
       <Gallery />
+      <LifeTimeline />
       <Obituary />
       <RememberBook />
       <Remembrance />
