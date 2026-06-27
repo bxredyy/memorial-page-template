@@ -1,6 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Reveal from "./Reveal";
+import { useMemorial } from "./MemorialContext";
+import SupportDialog from "./SupportDialog";
+import { supportOptions } from "./supportOptions";
+import { formatServiceDate, formatTime } from "@/lib/format";
 
 /* ─────────────────────────────── DATA ─────────────────────────────── */
 
@@ -37,6 +42,7 @@ const rightPortraits = [
 /* ─────────────────────────────── ROOT ─────────────────────────────── */
 
 export default function EventsView() {
+  const [supportKey, setSupportKey] = useState(null);
   return (
     <div className="pt-10 pb-10">
 
@@ -56,13 +62,18 @@ export default function EventsView() {
       {/* ── Service info + video ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12 items-center">
         <Reveal>
-          <ServiceInfo />
+          <ServiceInfo onSupport={setSupportKey} />
         </Reveal>
         <Reveal delay={100}>
           <ServiceVideo />
         </Reveal>
       </div>
 
+      <SupportDialog
+        optionKey={supportKey}
+        options={supportOptions}
+        onClose={() => setSupportKey(null)}
+      />
     </div>
   );
 }
@@ -199,7 +210,13 @@ function BookIllustration({ portraits }) {
 
 /* ─────────────────────────── SERVICE INFO ──────────────────────────── */
 
-function ServiceInfo() {
+function ServiceInfo({ onSupport }) {
+  const m = useMemorial();
+  const dateStr = m.service_date ? formatServiceDate(m.service_date) : "Date to be announced";
+  const timeStr = m.service_date
+    ? `${formatTime(m.service_date)}${m.service_end ? ` – ${formatTime(m.service_end)}` : ""} SAST`
+    : null;
+
   return (
     <div>
       {/* Live stream badge */}
@@ -212,23 +229,36 @@ function ServiceInfo() {
 
       {/* Script heading */}
       <h2 className="mt-4 font-script leading-none text-ink-900" style={{ fontSize: "clamp(30px, 4.5vw, 52px)" }}>
-        Funeral Service for [Name of Deceased]
+        {m.service_title || "Funeral Service"} for {m.fullName}
       </h2>
 
       {/* Date & time */}
       <p className="mt-4 font-display text-[15px] tracking-[0.07em] text-ink-700">
-        Sat, 6 Sep 2025
+        {dateStr}
       </p>
-      <p className="mt-0.5 font-display text-[15px] tracking-[0.07em] text-ink-700">
-        11:00 &ndash; 12:00 SAST
-      </p>
+      {timeStr && (
+        <p className="mt-0.5 font-display text-[15px] tracking-[0.07em] text-ink-700">
+          {timeStr}
+        </p>
+      )}
+      {m.service_location && (
+        <p className="mt-0.5 font-display text-[15px] tracking-[0.07em] text-ink-700">
+          {m.service_location}
+        </p>
+      )}
 
       {/* CTA buttons */}
       <div className="mt-6 flex gap-3 flex-wrap">
-        <button className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition">
+        <button
+          onClick={() => onSupport("funeral")}
+          className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition"
+        >
           <SupportIcon /> Show Support
         </button>
-        <button className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition">
+        <button
+          onClick={() => onSupport("flowers")}
+          className="inline-flex items-center gap-2 border border-ink-300/70 text-ink-800 hover:bg-cream-200 text-[10.5px] uppercase tracking-[0.22em] px-5 py-2.5 rounded-sm transition"
+        >
           <FlowerIcon /> Send Flowers
         </button>
       </div>

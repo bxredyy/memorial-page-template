@@ -1,14 +1,17 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
+import { useMemorial } from "./MemorialContext";
 
 const NAV_ITEMS = [
-  { id: "memorial", label: "Memorial" },
+  { id: "obituary", label: "Memorial" },
   { id: "memories", label: "Memories" },
   { id: "events", label: "Events" },
 ];
 
 export default function TopBar() {
+  const m = useMemorial();
+  const initial = (m.fullName || "M").trim().charAt(0).toUpperCase();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,7 +38,7 @@ export default function TopBar() {
             scrolled ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 pointer-events-none"
           }`}
         >
-          N
+          {initial}
         </div>
 
         <nav
@@ -81,12 +84,12 @@ export default function TopBar() {
           </button>
 
           <a
-            href="#"
+            href="/dashboard"
             className={`hidden md:inline text-[11px] uppercase tracking-[0.22em] transition-colors duration-500 ${
               scrolled ? "text-ink-700 hover:text-ink-900" : "text-white/90 hover:text-white"
             }`}
           >
-            Submit Login
+            Family Login
           </a>
         </div>
       </div>
@@ -113,11 +116,11 @@ export default function TopBar() {
             </nav>
             <div className="mt-4 border-t pt-4">
               <a
-                href="#"
+                href="/dashboard"
                 className="block text-center text-[13px] uppercase tracking-wide text-ink-700"
                 onClick={() => setMenuOpen(false)}
               >
-                Submit Login
+                Family Login
               </a>
             </div>
           </div>

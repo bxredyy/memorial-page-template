@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
+import { useMemorial } from "./MemorialContext";
 
 export default function Hero() {
+  const m = useMemorial();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -32,8 +34,8 @@ export default function Hero() {
       >
         <div className="w-[88px] h-[88px] rounded-full ring-4 ring-cream-100 overflow-hidden shadow-xl bg-cream-200">
           <img
-            src="/images/hero-portrait.jpg"
-            alt="Portrait of Name of Deceased"
+            src={m.portrait_image_url || "/images/hero-portrait.jpg"}
+            alt={`Portrait of ${m.fullName}`}
             className="w-full h-full object-cover object-top"
           />
         </div>
@@ -51,8 +53,8 @@ export default function Hero() {
           }}
         >
           <img
-            src="/images/hero-bg.jpg"
-            alt="Name of Deceased"
+            src={m.hero_image_url || "/images/hero-bg.jpg"}
+            alt={m.fullName}
             className="w-full h-full object-cover object-top hero-drift"
           />
         </div>
@@ -63,20 +65,23 @@ export default function Hero() {
             className="font-script text-[clamp(72px,9vw,140px)] leading-none text-copper-500"
             style={{ textShadow: "0 1px 0 rgba(255,255,255,0.4)" }}
           >
-            Name of Deceased
+            {m.fullName}
           </h1>
 
           <Reveal delay={150} className="mt-6 flex items-center justify-center gap-6 text-ink-700">
-            <span className="font-display text-2xl tracking-[0.18em]">1977</span>
+            <span className="font-display text-2xl tracking-[0.18em]">{m.birthYear || "—"}</span>
             <FloralDots />
-            <span className="font-display text-2xl tracking-[0.18em]">2025</span>
+            <span className="font-display text-2xl tracking-[0.18em]">{m.deathYear || "—"}</span>
           </Reveal>
 
-          <Reveal delay={300} as="p" className="mt-6 text-[15px] md:text-base text-ink-700 leading-relaxed max-w-xl mx-auto">
-            [Name] was born on 14 March 1977 and passed away on
-            <br />
-            2 September 2025 at the age of 48
-          </Reveal>
+          {(m.birthDateLong || m.deathDateLong) && (
+            <Reveal delay={300} as="p" className="mt-6 text-[15px] md:text-base text-ink-700 leading-relaxed max-w-xl mx-auto">
+              {m.name} was born on {m.birthDateLong} and passed away on
+              <br />
+              {m.deathDateLong}
+              {m.age != null && ` at the age of ${m.age}`}
+            </Reveal>
+          )}
         </div>
       </Reveal>
 

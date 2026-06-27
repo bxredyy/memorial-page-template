@@ -1,18 +1,29 @@
+"use client";
+
 import Reveal from "./Reveal";
+import { useMemorial } from "./MemorialContext";
 
 export default function Remembrance() {
+  const m = useMemorial();
+  // Use up to 5 real photos in the fan; fall back to the design placeholders.
+  const realPhotos = (m.photos || []).slice(0, 5).map((p) => p.url).filter(Boolean);
+  const fan = fanLayout.map((layout, i) => ({
+    ...layout,
+    src: realPhotos[i] || `https://picsum.photos/seed/fan-${i + 1}/320/400`,
+  }));
+
   return (
     <section className="relative min-h-[90vh] bg-cream-100 py-20 px-6 flex flex-col items-center">
       <Reveal className="text-[11px] uppercase tracking-[0.4em] text-sage-600">
         In Remembrance Of
       </Reveal>
       <Reveal as="h2" delay={120} className="mt-3 font-script text-6xl md:text-7xl text-copper-500">
-        Name of Deceased
+        {m.fullName}
       </Reveal>
 
       {/* Fanned photos */}
       <Reveal delay={240} className="relative mt-12 h-[280px] w-full max-w-3xl flex items-center justify-center">
-        {fanPhotos.map((p, i) => (
+        {fan.map((p, i) => (
           <FanPhoto key={i} {...p} />
         ))}
       </Reveal>
@@ -32,12 +43,12 @@ export default function Remembrance() {
   );
 }
 
-const fanPhotos = [
-  { src: "https://picsum.photos/seed/fan-1/320/400", rotate: -18, x: -240, z: 1, scale: 0.9 },
-  { src: "https://picsum.photos/seed/fan-2/320/400", rotate: -9,  x: -130, z: 2, scale: 0.95 },
-  { src: "https://picsum.photos/seed/fan-3/360/460", rotate: 0,   x: 0,    z: 4, scale: 1.05 },
-  { src: "https://picsum.photos/seed/fan-4/320/400", rotate: 9,   x: 130,  z: 2, scale: 0.95 },
-  { src: "https://picsum.photos/seed/fan-5/320/400", rotate: 18,  x: 240,  z: 1, scale: 0.9 },
+const fanLayout = [
+  { rotate: -18, x: -240, z: 1, scale: 0.9 },
+  { rotate: -9,  x: -130, z: 2, scale: 0.95 },
+  { rotate: 0,   x: 0,    z: 4, scale: 1.05 },
+  { rotate: 9,   x: 130,  z: 2, scale: 0.95 },
+  { rotate: 18,  x: 240,  z: 1, scale: 0.9 },
 ];
 
 function FanPhoto({ src, rotate, x, z, scale }) {

@@ -1,7 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Reveal from "./Reveal";
+import { useMemorial } from "./MemorialContext";
+import PhotoUploadDialog from "./PhotoUploadDialog";
 
 // Sizes: lg = 300x400, md = 220x280, sm = 180x230, wide = 320x220
 // Tone: bw (full grayscale), warm (vintage only), mute (low contrast)
@@ -37,12 +39,22 @@ const TONE_CLASS = {
 };
 
 export default function Gallery() {
+  const m = useMemorial();
   const trackRef = useRef(null);
+  const [uploadOpen, setUploadOpen] = useState(false);
 
   const scrollBy = (delta) => {
     if (!trackRef.current) return;
     trackRef.current.scrollBy({ left: delta, behavior: "smooth" });
   };
+
+  // Live photos overlaid on the hanging-gallery layout templates; falls back
+  // to placeholder seeds when the family hasn't added photos yet.
+  const live = m.photos || [];
+  const displayPhotos =
+    live.length > 0
+      ? live.map((p, i) => ({ ...photos[i % photos.length], src: p.url, caption: p.caption }))
+      : photos;
 
   return (
     <section id="memories" className="relative min-h-screen flex flex-col justify-center bg-cream-100 pt-10 pb-20 scroll-mt-20">
@@ -51,11 +63,11 @@ export default function Gallery() {
           A life in photographs
         </p>
         <h2 className="mt-3 font-display text-4xl md:text-5xl text-ink-900">
-          Moments of [Name]
+          Moments of {m.name}
         </h2>
         <p className="mt-3 text-ink-700 max-w-xl mx-auto text-[15px]">
           Scroll through cherished memories — each photo a small chapter of the
-          life he shared with us.
+          life {m.name} shared with us.
         </p>
       </Reveal>
 
@@ -89,26 +101,24 @@ export default function Gallery() {
           className="scrollbar-hidden overflow-x-auto scroll-smooth"
         >
           <div className="flex items-start gap-10 px-16 pt-16 pb-10 min-h-[600px]">
-            <ContributionCard />
+            <ContributionCard name={m.name} onUpload={() => setUploadOpen(true)} />
 
-            {photos.map((p, i) => (
+            {displayPhotos.map((p, i) => (
               <Photo key={i} {...p} index={i} />
             ))}
 
-            <ShareCard />
+            <ShareCard name={m.name} onUpload={() => setUploadOpen(true)} />
           </div>
         </div>
       </div>
 
       <p className="text-center mt-8 text-[12px] text-ink-500">
-        <a href="#" className="underline-offset-4 hover:underline">
-          Turn [Name]'s Photo Book Into a Book
-        </a>
-        <br />
-        <span className="text-[11px] tracking-wide">
-          Save treasured memories preserved by [DEMO BRAND NAME]
-        </span>
+        <button onClick={() => setUploadOpen(true)} className="underline-offset-4 hover:underline">
+          Add your photos of {m.name}
+        </button>
       </p>
+
+      <PhotoUploadDialog open={uploadOpen} onClose={() => setUploadOpen(false)} />
     </section>
   );
 }
@@ -163,10 +173,10 @@ function Photo({ src, size, tilt, drop, tone, frame, index }) {
   );
 }
 
-function ContributionCard() {
+function ContributionCard({ name, onUpload }) {
   return (
     <div className="pin relative shrink-0" style={{ marginTop: "32px" }}>
-      <button className="bg-sage-500 hover:bg-sage-600 text-white p-3 pb-10 shadow-polaroid transition group">
+      <button onClick={onUpload} className="bg-sage-500 hover:bg-sage-600 text-white p-3 pb-10 shadow-polaroid transition group">
         <div className="w-[200px] h-[260px] flex flex-col items-center justify-center gap-4 border border-white/40 rounded-sm">
           <div className="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white/25 transition">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -174,7 +184,7 @@ function ContributionCard() {
             </svg>
           </div>
           <div className="text-center px-4">
-            <p className="font-display text-lg leading-snug">Upload Photos<br/>of [Name]</p>
+            <p className="font-display text-lg leading-snug">Upload Photos<br/>of {name}</p>
           </div>
         </div>
       </button>
@@ -182,7 +192,7 @@ function ContributionCard() {
   );
 }
 
-function ShareCard() {
+function ShareCard({ name, onUpload }) {
   return (
     <div className="pin relative shrink-0" style={{ marginTop: "48px" }}>
       <div className="bg-white p-5 pb-8 shadow-polaroid w-[300px]">
@@ -191,12 +201,12 @@ function ShareCard() {
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <p className="font-display text-xl text-ink-900 leading-tight">
-            Share Your Photos<br/>of [Name]
+            Share Your Photos<br/>of {name}
           </p>
           <p className="mt-2 text-[12px] text-ink-700 leading-relaxed">
             Add a moment to their story. Every photograph helps the family remember the person they loved.
           </p>
-          <button className="mt-4 bg-sage-500 hover:bg-sage-600 text-white text-[12px] uppercase tracking-[0.18em] px-5 py-2 rounded-sm transition">
+          <button onClick={onUpload} className="mt-4 bg-sage-500 hover:bg-sage-600 text-white text-[12px] uppercase tracking-[0.18em] px-5 py-2 rounded-sm transition">
             Contribute
           </button>
         </div>

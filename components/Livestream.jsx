@@ -1,4 +1,8 @@
+"use client";
+
 import Reveal from "./Reveal";
+import { useMemorial } from "./MemorialContext";
+import { formatServiceDate, formatTime } from "@/lib/format";
 
 const shareIcons = [
   { label: "QR Code", color: "bg-ink-900", svg: (
@@ -31,6 +35,12 @@ const shareIcons = [
 ];
 
 export default function Livestream() {
+  const m = useMemorial();
+  const dateLine = m.service_date
+    ? `${formatServiceDate(m.service_date).toUpperCase()} · ${formatTime(m.service_date)}${
+        m.service_end ? ` – ${formatTime(m.service_end)}` : ""
+      } SAST`
+    : "Date to be announced";
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center py-24 bg-cream-100">
       {/* Share icons row */}
@@ -57,10 +67,10 @@ export default function Livestream() {
       <Reveal delay={200} className="mt-10 text-center">
         <div className="inline-block bg-sage-500 text-white px-10 py-4 rounded-sm shadow-lg">
           <p className="font-display text-xl md:text-2xl tracking-wide">
-            Funeral Service for Name of Deceased
+            {m.service_title || "Funeral Service"} for {m.fullName}
           </p>
           <p className="text-xs md:text-sm tracking-[0.18em] mt-1 text-cream-100/90">
-            SAT, 6 SEP 2025 · 11:00 – 12:00 SAST
+            {dateLine}
           </p>
         </div>
       </Reveal>

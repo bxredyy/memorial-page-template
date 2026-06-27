@@ -1,23 +1,52 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const actions = [
-  { label: "Send Flowers", icon: <FlowerIcon /> },
-  { label: "Send Grocery Support", icon: <GroceryIcon /> },
-  { label: "Sign [Name]'s Guestbook", icon: <GuestbookIcon /> },
-  { label: "Create [Name]'s Book", icon: <BookIcon /> },
-  { label: "Share this Memorial", icon: <ShareIcon /> },
-];
+import { useMemorial } from "./MemorialContext";
+import GuestbookDialog from "./GuestbookDialog";
+import SupportDialog from "./SupportDialog";
+import PhotoUploadDialog from "./PhotoUploadDialog";
+import { supportOptions } from "./supportOptions";
 
 export default function FloatingActionButton() {
+  const m = useMemorial();
   const [open, setOpen] = useState(false);
+  const [guestOpen, setGuestOpen] = useState(false);
+  const [supportKey, setSupportKey] = useState(null);
+  const [photoOpen, setPhotoOpen] = useState(false);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  const share = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    const title = `In memory of ${m.fullName}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+      } catch {
+        /* user cancelled */
+      }
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(url);
+      alert("Memorial link copied to clipboard.");
+    }
+  };
+
+  const run = (fn) => () => {
+    setOpen(false);
+    fn();
+  };
+
+  const actions = [
+    { label: "Send Flowers", icon: <FlowerIcon />, onClick: run(() => setSupportKey("flowers")) },
+    { label: "Send Grocery Support", icon: <GroceryIcon />, onClick: run(() => setSupportKey("grocery")) },
+    { label: `Sign ${m.name}'s Guestbook`, icon: <GuestbookIcon />, onClick: run(() => setGuestOpen(true)) },
+    { label: `Add Photos of ${m.name}`, icon: <BookIcon />, onClick: run(() => setPhotoOpen(true)) },
+    { label: "Share this Memorial", icon: <ShareIcon />, onClick: run(share) },
+  ];
 
   return (
     <>
@@ -34,8 +63,9 @@ export default function FloatingActionButton() {
         {/* Action items */}
         <div className="flex flex-col items-end gap-3">
           {actions.map((a, i) => (
-            <div
+            <button
               key={i}
+              onClick={a.onClick}
               className={`flex items-center gap-3 transition-all duration-300 ${
                 open
                   ? "opacity-100 translate-x-0"
@@ -50,10 +80,10 @@ export default function FloatingActionButton() {
               <span className="bg-white text-ink-900 text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-full shadow-xl whitespace-nowrap font-medium">
                 {a.label}
               </span>
-              <div className="w-12 h-12 rounded-full bg-sage-600 hover:bg-sage-700 shadow-xl flex items-center justify-center text-white shrink-0 cursor-pointer transition">
+              <span className="w-12 h-12 rounded-full bg-sage-600 hover:bg-sage-700 shadow-xl flex items-center justify-center text-white shrink-0 cursor-pointer transition">
                 {a.icon}
-              </div>
-            </div>
+              </span>
+            </button>
           ))}
         </div>
 
@@ -71,6 +101,10 @@ export default function FloatingActionButton() {
           </span>
         </button>
       </div>
+
+      <GuestbookDialog open={guestOpen} onClose={() => setGuestOpen(false)} type="guestbook" />
+      <SupportDialog optionKey={supportKey} options={supportOptions} onClose={() => setSupportKey(null)} />
+      <PhotoUploadDialog open={photoOpen} onClose={() => setPhotoOpen(false)} />
     </>
   );
 }
